@@ -1,4 +1,4 @@
-﻿; ============================
+; ============================
 ; CONFIGURAÇÃO INICIAL
 ; ============================
 
@@ -239,7 +239,7 @@ F1:: ; ENTREGUE
 Return
 
 
-F2:: ; BLOXFIM
+$F2:: ; BLOXFIM
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
@@ -253,8 +253,10 @@ F2:: ; BLOXFIM
             Send, {Enter 5}
             Sleep, 50
             Send, ^!r
+            Return
         }
     }
+    SendInput {F2}
 Return
 
 
@@ -272,7 +274,7 @@ F3:: ; ADD FRIEND (Chrome)
 Return
 
 
-F4:: ; AMIZADE 2
+$F4:: ; AMIZADE 2
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
@@ -285,6 +287,7 @@ F4:: ; AMIZADE 2
             Send, {Enter 3}
         }
     }
+    SendInput {F4}
 Return
 
 
@@ -309,7 +312,7 @@ F7::   ; WELCOME
 Return
 
 
-F8::   ; GAG 2
+$F8::   ; GAG 2
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
@@ -327,6 +330,7 @@ F8::   ; GAG 2
             Send, {Enter}
         }
     }
+    SendInput {F8}
 Return
 
 
@@ -347,7 +351,7 @@ Return
 Return
 
 
-F9::   ; online
+$F9::   ; online
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
@@ -365,6 +369,7 @@ F9::   ; online
             Sleep, 100
         }
     }
+    SendInput {F9}
 Return
 
 ; ============================
@@ -538,6 +543,17 @@ Return
     Send, ^h
     Sleep, 50
     Clipboard := "^(.*)(\n\1)+$"
+    Send, ^v
+    Sleep, 50
+    Send, !{Enter}
+    Sleep, 50
+Return
+
+^F6::   ; LOCALIZAR ""DUPLICATED LINES + ORIGINAL"""
+    Sleep, 100
+    Send, ^h
+    Sleep, 50
+    Clipboard := "^(.+)\n\1"
     Send, ^v
     Sleep, 50
     Send, !{Enter}
