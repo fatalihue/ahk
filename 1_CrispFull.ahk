@@ -27,69 +27,76 @@ return
     return
 #IfWinActive
 
+
+SendTextLine(text, newlines := 1)
+{
+    oldClip := ClipboardAll
+    Clipboard := text
+    ClipWait, 0.3
+    SendInput, ^v
+    Sleep, 50
+    SendInput, +{Enter %newlines%}
+    Sleep, 50
+    Clipboard := oldClip
+}
+
 ; ============================
 ; HOTKEYS (Chrome/Brave)
 ; ============================
 
-$Numpad1:: ; ANDAMENTO    
-    IfWinActive, ahk_exe Brave.exe    
-    {
-        WinGetTitle, title, A        
-        if InStr(title, "crisp")        
-        {
-            Sleep, 100
-            Send, +1
-            Sleep, 50
-            Send, anda
-            Sleep, 50
-            Send, {Enter 5}
-            Return
-        }
-    }    
-    SendInput {Numpad1}
-Return
-
-
-$Numpad2:: ; GAMEPASS
+^Numpad1:: ; ANDAMENTO
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
         {
             Sleep, 100
-            Send, +1
-            Sleep, 50
-            Send, gamepass
-            Sleep, 50
-            Send, {Enter 5}
-            Return
+            SendTextLine("🙋‍♂️Olá, seja bem vindo!", 2)
+            SendTextLine("Seu pedido está na fila e será entregue nos próximos minutos")
+            SendTextLine("Nossa equipe já está cuidando de tudo e logo você receberá seu pedido", 2)
+            SendTextLine("😎​ Por favor AGUARDE A SUA VEZ ​😃")
+            Sleep, 100
+            SendInput, {Enter 3}
         }
     }
-    SendInput {Numpad2}
 Return
 
 
-$Numpad3:: ; INFORME
+^Numpad2:: ; ONLINE
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
         {
-            Send, +1
-            Sleep, 50
-            Send, informe
-            Sleep, 50
-            Send, {Enter 5}
-            Sleep, 50
-            Send, ^!r
+            Sleep, 100
             Return
         }
     }
-    SendInput {Numpad3}
 Return
 
 
-$Numpad4:: ; AMIZADE 1
+^Numpad3:: ; INFORME
+    IfWinActive, ahk_exe Brave.exe
+    {
+        WinGetTitle, title, A
+        if InStr(title, "crisp")
+        {
+            Sleep, 100
+            SendTextLine("🙋‍♂️Olá, vou localizar seu pedido!")
+            SendTextLine("Por favor me informe algum desses dados:", 2)
+
+            SendTextLine("1) E-MAIL cadastrado em nosso site.")
+            SendTextLine("2) Nome completo do pagador.")
+            SendTextLine("3) Número do pedido (ID da compra).")
+            SendTextLine("4) Comprovante de Pagamento PIX.")
+            Sleep, 100
+            SendInput, {Enter 3}
+        }
+    }
+Return
+
+
+^Numpad4:: ; AMIZADE 1
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
@@ -129,169 +136,94 @@ $Numpad4:: ; AMIZADE 1
             Return
         }
     }
-    SendInput {Numpad4}
 Return
 
 
-$Numpad7:: ; ONLINE
+^Numpad7:: ; INFORME
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
         {
             Sleep, 100
-            Clipboard := "😎 Olá, Por favor avisa quando estiver online para receber seu pedido!!!"
-            Sleep, 50
-            Send, ^v
-            Sleep, 50
-            Send, {Enter 3}
-            Return
+            SendTextLine("😎 Olá, Por favor avise quando estiver online para receber seu pedido! Estamos esperando você voltar!")
+            Sleep, 100
+            SendInput, {Enter 3}
         }
     }
-    SendInput {Numpad7}
 Return
 
 
-$Numpad8:: ; REEMBOLSO
+^Numpad8:: ; INFORME
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
         {
             Sleep, 100
-            Send, +1
-            Sleep, 50
-            Send, reembolso
-            Sleep, 50
-            Send, {Enter 3}
-            Return
+            SendTextLine("De acordo com nossa política de compra, disponível em: https://bloxbrasil.com.br/politica-compra Reembolsos só são possíveis se houver algum erro no produto ou na entrega. Reembolsos por arrependimento não são possíveis.")
+            Sleep, 100
+            SendInput, {Enter 3}
         }
     }
-    SendInput {Numpad8}
 Return
 
 
-$Numpad9:: ; REEMBOLSADO
+^Numpad9:: ; INFORME
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
         {
             Sleep, 100
-            Send, +1
-            Sleep, 50
-            Send, reembolsado
-            Sleep, 50
-            Send, {Enter 3}
-            Return
+            SendTextLine("✅ Seu pedido foi Reembolsado com sucesso!")
+            SendTextLine("✅ O dinheiro retornou a conta de origem do pagador!")
+            SendTextLine("✅ Confira seu extrato bancário!")
+            Sleep, 100
+            SendInput, {Enter 3}
         }
     }
-    SendInput {Numpad9}
 Return
 
 
-$\:: ; POST / ENTREGUE
+$F1:: ; ENTREGUE
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
         {
-            Sleep, 50
-            Send, +1
-            Sleep, 50
-            Send, post
-            Sleep, 500
-            Send, {Enter 3}
-            Send, {Enter 3}
-            Sleep, 1000
-            Send, +1
-            Sleep, 50
-            Send, entregue
             Sleep, 100
-            Send, {Enter 5}
-            Sleep, 50
-            Send, ^!r
-            Return
-        }
-    }
-    SendInput {\}
-Return
+            SendTextLine("🎉Entrega realizada com sucesso!🎉")
+            SendTextLine("Muito obrigado por comprar na **Blox Brasil**, ficamos felizes em ter você aqui!", 2)
 
-
-F1:: ; ENTREGUE
-    IfWinActive, ahk_exe Brave.exe
-    {
-        WinGetTitle, title, A        
-        if InStr(title, "crisp")
-        {
+            SendTextLine("🎁 Utilize o cupom **VOLTESEMPRE** e tenha 12% de desconto na sua próxima compra!!")
             Sleep, 100
-            Send, {Enter 3}
-            Sleep, 50
-            Send, +1
-            Sleep, 50
-            Send, entregue
-            Sleep, 100
-            Send, {Enter 5}
+            SendInput, {Enter 3}
             Sleep, 50
             Send, ^!r
         }
     }
+    ;SendInput {F1}
 Return
 
 
-$F2:: ; BLOXFIM
+$F4:: ; AMIZADE
     IfWinActive, ahk_exe Brave.exe
     {
-        WinGetTitle, title, A        
+        WinGetTitle, title, A
         if InStr(title, "crisp")
         {
             Sleep, 100
-            Send, +1
-            Sleep, 50
-            Send, bloxfim
+            SendTextLine("🚨 Te mandei pedido de amizade, aceita e entra no servidor!")
             Sleep, 100
-            Send, {Enter 5}
-            Sleep, 50
-            Send, ^!r
-            Return
-        }
-    }
-    SendInput {F2}
-Return
-
-
-F3:: ; ADD FRIEND (Chrome)
-    WinActivate, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
-    WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
-    Sleep, 100
-    Click, 465, 110
-    Sleep, 100
-    Send, ^v
-    Sleep, 100
-    Click, 465, 160
-    Sleep, 2000
-    Click, 200, 455
-Return
-
-
-$F4:: ; AMIZADE 2
-    IfWinActive, ahk_exe Brave.exe
-    {
-        WinGetTitle, title, A        
-        if InStr(title, "crisp")
-        {
-            Sleep, 100
-            Clipboard := "🚨 Te mandei pedido de amizade, aceita e entra no servidor!!!"
-            Sleep, 50
-            Send, ^v
-            Send, {Enter 3}
+            SendInput, {Enter 3}
         }
     }
     SendInput {F4}
 Return
 
 
-F7::   ; WELCOME
+$F6::   ; PLANT VS BRAINROT
     IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
@@ -300,7 +232,7 @@ F7::   ; WELCOME
             Sleep, 100
             Send, +1
             Sleep, 50
-            Send, welcome
+            Send, plant
             Sleep, 100
             Send, {Enter}
             Sleep, 100
@@ -309,6 +241,25 @@ F7::   ; WELCOME
             Send, {Enter}
         }
     }
+    ;SendInput {F6}
+Return
+
+
+$F7:: ; WELCOME
+    IfWinActive, ahk_exe Brave.exe
+    {
+        WinGetTitle, title, A
+        if InStr(title, "crisp")
+        {
+            Sleep, 100
+            SendTextLine("Olá, ficamos felizes em ter você aqui na **Blox Brasil**  <3", 2)
+
+            SendTextLine("Como posso te ajudar?")
+            Sleep, 100
+            SendInput, {Enter 3}
+        }
+    }
+    ;SendInput {F7}
 Return
 
 
@@ -321,7 +272,7 @@ $F8::   ; GAG 2
             Sleep, 100
             Send, +1
             Sleep, 50
-            Send, crescer2
+            Send, !crescer2
             Sleep, 100
             Send, {Enter}
             Sleep, 100
@@ -343,7 +294,7 @@ Return
             Sleep, 100
             Send, +1
             Sleep, 50
-            Send, sb2
+            Send, art
             Sleep, 100
             Send, {Enter 3}
         }
@@ -357,16 +308,12 @@ $F9::   ; online
         WinGetTitle, title, A        
         if InStr(title, "crisp")
         {
+            Sleep, 100
+            Send, +1
             Sleep, 50
-            Clipboard := "🙋‍♂️ Olá, bom dia! Começamos as entregas 09:00 horas."
+            Send, hora
             Sleep, 100
-            Send, ^v
-            Send, {Enter}
-            Sleep, 100
-            Clipboard := "😎 Por favor aguarde aqui nesse chat que você será atendido!!"
-            Send, ^v
-            Send, {Enter}
-            Sleep, 100
+            Send, {Enter 5}
         }
     }
     SendInput {F9}
@@ -388,8 +335,32 @@ Return
 Return
 
 
-^\::
-    Send, 10000000000000000000000
+!Numpad1::
+    Send, 50000000000000000000000
+Return
+
+!Numpad2::
+    Send, 100000000000000000000000
+Return
+
+
+^p:: ; PAGINA PEDIDO
+    IfWinActive, ahk_exe Brave.exe
+    {
+        WinGetTitle, title, A
+        if InStr(title, "crisp")
+        {
+            Sleep, 80
+            Nome := Clipboard  ; pega o nome copiado
+
+            SendTextLine("Utilize a pagina do seu pedido!", 2)
+            SendTextLine("Você mesmo pode localizar todas as suas compras clicando nesse link:")
+            SendTextLine("https://bloxbrasil.com.br/meus-pedidos", 2)
+            SendTextLine("Caso não esteja vendo nada clique no botão **Recuperar Compras** e digite o seu e-mail.")
+            Sleep, 100
+            SendInput, {Enter 3}
+        }
+    }
 Return
 
 
@@ -406,77 +377,101 @@ Return
 
 ^!4::   ; INSTRUÇÕES
     Sleep, 200
-    Clipboard := "Olá, por favor siga as instruções para receber seu pedido! Basta ler o chat acima e seguir o passo a passo!"
+    Clipboard := "Olá, por favor siga as instruções para receber seu pedido! Basta ler o chat acima com atenção e seguir o passo a passo!"
     Sleep, 50
     Send, ^v
     Send, {Enter 3}
 Return
 
 ; ============================
-; MOVIMENTAÇÃO DE JANELAS
-; ============================
-
-^Numpad6:: ; GaG > Sumidos
-    WinActivate, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-    WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-
-	Sleep, 100
-	Click, 670, 137
-	Sleep, 50
-	Click, 761, 314
-	Sleep, 50
-	Click, 960, 353
-Return
-
-^Numpad5:: ; Sumidos > GaG
-    WinActivate, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-    WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-
-    Sleep, 100
-    Click, 671, 136
-    Sleep, 50
-    Click, 739, 311
-    Sleep, 50
-    Click, 944, 380
-Return
-
-^Numpad9:: ; Principal > Sumidos
-    WinActivate, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-    WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-
-    Sleep, 100
-    Click, 671, 138
-    Sleep, 50
-    Click, 742, 311
-    Sleep, 50
-    Click, 930, 314
-Return
-
-^Numpad8:: ; Sumidos > Principal
-    WinActivate, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-    WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe Brave.exe
-
-    Sleep, 100
-    Click, 671, 137
-    Sleep, 50
-    Click, 751, 317
-    Sleep, 50
-    Click, 976, 320
-Return
-
-; ============================
 ; TEXTOS AUTOMÁTICOS
 ; ============================
 
-::vct::vctmelo21@gmail.com
-::Xn::Xndin82465@
-::cpf::04114565396
-::cep::60050041
-::tel::85994392174
-::solon::Rua Solon Pinheiro, 1284
 
-::/ve::Por favor aguarde um momento enquanto verifico. Te respondo em alguns minutos...
-::/pg::por favor utilize a página do seu pedido. basta entrar nesse link e mandar uma mensagem que nossa equipe vai te atender!
+::/ve::Por favor aguarde um momento enquanto verifico. Te respondo em alguns minutos.
+::/pg::Por favor utilize a página do seu pedido. Basta entrar nesse link e mandar uma mensagem que a nossa equipe vai te atender!
+::/att::Atualizei a sua conta, tente entrar novamente. A senha mudou ok?
+
+!^Numpad1:: ; PLANTS VS BRAINROT
+    {
+        Sleep, 50
+        Send, ^a
+        Sleep, 50
+        Clipboard := "https://www.roblox.com/share?code=c67750af8431004da977b5c950a8e45c&type=Server"
+        Sleep, 50
+        Send, ^v
+        Sleep, 50
+        Send, {Enter}
+    }
+Return
+
+!^Numpad2:: ; PGROW A GARDEN
+    {
+        Sleep, 50
+        Send, ^a
+        Sleep, 50
+        Clipboard := "https://www.roblox.com/share?code=e125623b3d46f34c9eb17a8192928d1f&type=Server"
+        Sleep, 50
+        Send, ^v
+        Sleep, 50
+        Send, {Enter}
+    }
+Return
+
+!^Numpad3:: ; ENTREGA STEAL
+    {
+        Sleep, 50
+        Send, ^a
+        Sleep, 50
+        Clipboard := "https://www.roblox.com/share?code=803eab9c16f89f4fb941de6d54f6cf4b&type=Server"
+        Sleep, 50
+        Send, ^v
+        Sleep, 50
+        Send, {Enter}
+    }
+Return
+
+!Numpad4:: ; copiar formato
+    {        
+        Send, {Delete}
+        Sleep, 50
+        Send, {Delete}
+        Sleep, 50
+        Send, {Down}
+        Sleep, 50
+        Send, {Down}
+        Sleep, 50
+        Send, ^{Backspace}
+        Sleep, 50
+        Send, ^{Backspace}
+        Sleep, 50
+        Send, ^{Backspace}
+        Sleep, 50
+        Send, ^a
+        Sleep, 50
+        Send, ^c
+        Sleep, 50
+    }
+Return
+
+!Numpad5:: ; PLANTS VS BRAINROT
+    {
+        Sleep, 100
+        Send, ^v
+        Sleep, 100
+        Send, ^+{Left}
+        Sleep, 100
+        Send, ^x
+        Sleep, 100
+        Send, {Backspace}
+        Sleep, 100
+        Send, {Tab}
+        Sleep, 100
+        Send, ^v
+        Sleep, 100
+        Send, {Enter}
+    }
+Return
 
 ; ============================
 ; MANIPULAÇÃO DE COOKIES/USERS
@@ -492,9 +487,15 @@ Return
     Send, !{Enter}
     Send, {Right}
     Sleep, 50
-    Send, ^+{Delete}
+    Send, +{End}
+    Sleep, 50
+    Send, {BackSpace}
+    Sleep, 50
+    Send, {BackSpace}
     Sleep, 50
     Send, ^a
+    Sleep, 50
+    Send, ^c
 Return
 
 ^F2::   ; GET ""COOKIE"""
@@ -505,11 +506,12 @@ Return
     Send, ^v
     Sleep, 50
     Send, !{Enter}
-    Send, {Right}
     Sleep, 50
-    Send, ^+{BackSpace}
+    Send, {BackSpace}
     Sleep, 50
     Send, ^a
+    Sleep, 50
+    Send, ^c
 Return
 
 ^F3::   ; DELETE ""USER:PASS""" (remover usuário e senha DUPLICADOS)
@@ -526,7 +528,7 @@ Return
     Send, {Delete}
 Return
 
-^F4::   ; DELETE ""EMPTY LINE""
+^F7::   ; DELETE ""EMPTY LINE""
     Sleep, 100
     Send, ^h
     Sleep, 50
