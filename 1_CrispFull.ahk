@@ -314,6 +314,8 @@ $F9::   ; online
             Send, hora
             Sleep, 100
             Send, {Enter 5}
+            Sleep, 100
+            ;Send, ^!r
         }
     }
     SendInput {F9}
@@ -423,7 +425,7 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=803eab9c16f89f4fb941de6d54f6cf4b&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=6ec72466389f3f4f82f447472d5ac61b&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
