@@ -45,16 +45,19 @@ SendTextLine(text, newlines := 1)
 ^Numpad1:: ; ANDAMENTO
     IfWinActive, ahk_exe Brave.exe
     {
-        WinGetTitle, title, A
+        WinGetTitle, title, A        
         if InStr(title, "crisp")
         {
             Sleep, 100
-            SendTextLine("🙋‍♂️Olá, seja bem vindo!", 2)
-            SendTextLine("Seu pedido está na fila e será entregue nos próximos minutos")
-            SendTextLine("Nossa equipe já está cuidando de tudo e logo você receberá seu pedido", 2)
-            SendTextLine("😎​ Por favor AGUARDE A SUA VEZ ​😃")
+            Send, +1
+            Sleep, 50
+            Send, anda
             Sleep, 100
-            SendInput, {Enter 3}
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
         }
     }
 Return
@@ -74,19 +77,19 @@ Return
 ^Numpad3:: ; INFORME
     IfWinActive, ahk_exe Brave.exe
     {
-        WinGetTitle, title, A
+        WinGetTitle, title, A        
         if InStr(title, "crisp")
         {
             Sleep, 100
-            SendTextLine("🙋‍♂️Olá, vou localizar seu pedido!")
-            SendTextLine("Por favor me informe algum desses dados:", 2)
-
-            SendTextLine("1) E-MAIL cadastrado em nosso site.")
-            SendTextLine("2) Nome completo do pagador.")
-            SendTextLine("3) Número do pedido (ID da compra).")
-            SendTextLine("4) Comprovante de Pagamento PIX.")
+            Send, +1
+            Sleep, 50
+            Send, informe
             Sleep, 100
-            SendInput, {Enter 3}
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
         }
     }
 Return
@@ -106,7 +109,7 @@ Return
             Send, +{Enter 2}
             Sleep, 25
 
-            Clipboard := "1) ACEITE amizade da minha conta"
+            Clipboard := "1 >>> ACEITE amizade da minha conta"
             Send, ^v
             Sleep, 25
             Send, +{Enter}
@@ -118,13 +121,13 @@ Return
             Send, +{Enter 2}
             Sleep, 25
 
-            Clipboard := "2) Entra no jogo, EU VOU TE SEGUIR!"
+            Clipboard := "2 >>> Entra no jogo, EU VOU TE SEGUIR!"
             Send, ^v
             Sleep, 25
             Send, +{Enter 2}
             Sleep, 25
 
-            Clipboard := "3) Fique online e AGUARDE seu produto chegar!"
+            Clipboard := "3 >>> Fique online e AGUARDE! Estou indo até você!"
             Send, ^v
             Sleep, 25
             Send, {Enter 3}
@@ -180,17 +183,20 @@ Return
 $F1:: ; ENTREGUE
     IfWinActive, ahk_exe Brave.exe
     {
-        WinGetTitle, title, A
+        WinGetTitle, title, A        
         if InStr(title, "crisp")
         {
             Sleep, 100
-            SendTextLine("🎉Entrega realizada com sucesso!🎉")
-            SendTextLine("Muito obrigado por comprar na **Blox Brasil**, ficamos felizes em ter você aqui!", 2)
-
-            SendTextLine("🎁 Utilize o cupom **VOLTESEMPRE** e tenha 12% de desconto na sua próxima compra!!")
-            Sleep, 100
-            SendInput, {Enter 3}
+            Send, +1
             Sleep, 50
+            Send, entregue
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
             Send, ^!r
         }
     }
@@ -364,16 +370,17 @@ Return
 ; TEXTOS AUTOMÁTICOS
 ; ============================
 
-::/ve::Por favor aguarde um momento enquanto verifico. Te respondo em alguns minutos.
+::/ve::Estamos verificando o seu pedido, por favor aguarde um instante. Te aviso o mais rápido possível!
 ::/pg::Por favor utilize a página do seu pedido. Basta entrar nesse link e mandar uma mensagem que a nossa equipe vai te atender!
-::/att::Atualizei a sua conta, tente entrar novamente. A senha mudou ok?
+::/att::Sua conta foi atualizada. Tente entrar novamente. A senha mudou ok? Copia e cola a senha nova que te enviei!
+::/pv::Por favor entre em um servidor público e aguarde que eu vou te seguir!
 
 !^Numpad1:: ; PLANTS VS BRAINROT
     {
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=c67750af8431004da977b5c950a8e45c&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=0394d631739cfe4187bd3a3d8d5c4fb7&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
@@ -399,7 +406,7 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=6ec72466389f3f4f82f447472d5ac61b&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=61b10df23617ae4da89c9fa1d52cc65d&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
@@ -427,25 +434,6 @@ Return
         Sleep, 50
         Send, ^c
         Sleep, 50
-    }
-Return
-
-!Numpad5:: ; PLANTS VS BRAINROT
-    {
-        Sleep, 100
-        Send, ^v
-        Sleep, 100
-        Send, ^+{Left}
-        Sleep, 100
-        Send, ^x
-        Sleep, 100
-        Send, {Backspace}
-        Sleep, 100
-        Send, {Tab}
-        Sleep, 100
-        Send, ^v
-        Sleep, 100
-        Send, {Enter}
     }
 Return
 
