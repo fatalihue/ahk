@@ -1,4 +1,4 @@
-﻿; ============================
+; ============================
 ; CONFIGURAÇÃO INICIAL
 ; ============================
 
@@ -406,7 +406,8 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=61b10df23617ae4da89c9fa1d52cc65d&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=61b10df23617ae4da89c9fa1d52cc65d&type=Server" ;restoque
+        ;Clipboard := "https://www.roblox.com/share?code=2afdcaef07f89e448ccc3570281d51b1&type=Server" ;st1
         Sleep, 50
         Send, ^v
         Sleep, 50
