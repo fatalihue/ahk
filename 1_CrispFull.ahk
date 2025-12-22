@@ -286,7 +286,7 @@ Return
             Sleep, 100
             Send, +1
             Sleep, 50
-            Send, art
+            Send, st1
             Sleep, 100
             Send, {Enter 3}
         }
@@ -380,7 +380,7 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=0394d631739cfe4187bd3a3d8d5c4fb7&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=dad9c4e7071ca449a5345bd256a8932b&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
@@ -393,7 +393,7 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=e125623b3d46f34c9eb17a8192928d1f&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=1573f8540f8c6142bf1c479ce579fb97&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
@@ -407,7 +407,7 @@ Return
         Send, ^a
         Sleep, 50
         Clipboard := "https://www.roblox.com/share?code=61b10df23617ae4da89c9fa1d52cc65d&type=Server" ;restoque
-        ;Clipboard := "https://www.roblox.com/share?code=2afdcaef07f89e448ccc3570281d51b1&type=Server" ;st1
+        ;Clipboard := "https://www.roblox.com/share?code=74ad9ce5a30a9145bc68b4132a5a5941&type=Server" ;st1
         Sleep, 50
         Send, ^v
         Sleep, 50
