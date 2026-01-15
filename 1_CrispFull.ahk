@@ -203,6 +203,29 @@ $F1:: ; ENTREGUE
     ;SendInput {F1}
 Return
 
+$F2:: ; BLOXFIM
+    IfWinActive, ahk_exe Brave.exe
+    {
+        WinGetTitle, title, A        
+        if InStr(title, "crisp")
+        {
+            Sleep, 100
+            Send, +1
+            Sleep, 50
+            Send, bloxfim
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, ^!r
+        }
+    }
+    SendInput {F2}
+Return
+
 $F4:: ; AMIZADE
     IfWinActive, ahk_exe Brave.exe
     {
@@ -227,7 +250,7 @@ $F6::   ; PLANT VS BRAINROT
             Sleep, 100
             Send, +1
             Sleep, 50
-            Send, plant
+            Send, plants2
             Sleep, 100
             Send, {Enter}
             Sleep, 100
@@ -286,7 +309,7 @@ Return
             Sleep, 100
             Send, +1
             Sleep, 50
-            Send, st1
+            Send, st2
             Sleep, 100
             Send, {Enter 3}
         }
@@ -374,13 +397,15 @@ Return
 ::/pg::Por favor utilize a página do seu pedido. Basta entrar nesse link e mandar uma mensagem que a nossa equipe vai te atender!
 ::/att::Sua conta foi atualizada. Tente entrar novamente. A senha mudou ok? Copia e cola a senha nova que te enviei!
 ::/pv::Por favor entre em um servidor público e aguarde que eu vou te seguir!
+::/bb::bloxbrasil123
+::/loc::Nenhum pedido localizado com essas informações. Por favor verifique se enviou os dados corretos para que seu pedido possa ser encontrado!
 
 !^Numpad1:: ; PLANTS VS BRAINROT
     {
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=dad9c4e7071ca449a5345bd256a8932b&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=edc23232995f4f4987ad9e89e002eb47&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
@@ -393,7 +418,7 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=1573f8540f8c6142bf1c479ce579fb97&type=Server"
+        Clipboard := "https://www.roblox.com/share?code=b0031b336bde914e9cb7a099310c2a2a&type=Server"
         Sleep, 50
         Send, ^v
         Sleep, 50
@@ -406,8 +431,9 @@ Return
         Sleep, 50
         Send, ^a
         Sleep, 50
-        Clipboard := "https://www.roblox.com/share?code=61b10df23617ae4da89c9fa1d52cc65d&type=Server" ;restoque
-        ;Clipboard := "https://www.roblox.com/share?code=74ad9ce5a30a9145bc68b4132a5a5941&type=Server" ;st1
+        ;Clipboard := "https://www.roblox.com/share?code=37bd7781b9ee324ca51fae4abce8b623&type=Server" ;restoque1
+        ;Clipboard := "https://www.roblox.com/share?code=c70019b491c98c408eb00b1f542bab79&type=Server" ;restoque2
+        Clipboard := "https://www.roblox.com/share?code=551ccd4a33920a47b3d2d928e590e91d&type=Server" ;st2
         Sleep, 50
         Send, ^v
         Sleep, 50
