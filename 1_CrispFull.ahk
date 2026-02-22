@@ -39,11 +39,8 @@ SendTextLine(text, newlines := 1)
 }
 
 ; ============================
-; HOTKEYS (Chrome/Brave)
-; ============================
 
 ^Numpad1:: ; ANDAMENTO
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -62,20 +59,7 @@ SendTextLine(text, newlines := 1)
     }
 Return
 
-^Numpad2:: ; ONLINE
-    IfWinActive, ahk_exe Brave.exe
-    {
-        WinGetTitle, title, A
-        if InStr(title, "crisp")
-        {
-            Sleep, 100
-            Return
-        }
-    }
-Return
-
 ^Numpad3:: ; INFORME
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -95,7 +79,6 @@ Return
 Return
 
 ^Numpad4:: ; AMIZADE 1
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -103,41 +86,18 @@ Return
             Sleep, 100
             Nome := Clipboard
 
-            Clipboard := "🙋‍♂️Olá, siga as instruções para receber o seu pedido:"
-            Send, ^v
-            Sleep, 25
-            Send, +{Enter 2}
-            Sleep, 25
-
-            Clipboard := "1 >>> ACEITE amizade da minha conta"
-            Send, ^v
-            Sleep, 25
-            Send, +{Enter}
-            Sleep, 25
-
-            Clipboard := "Meu nome é >>> " Nome
-            Send, ^v
-            Sleep, 25
-            Send, +{Enter 2}
-            Sleep, 25
-
-            Clipboard := "2 >>> Entra no jogo, EU VOU TE SEGUIR!"
-            Send, ^v
-            Sleep, 25
-            Send, +{Enter 2}
-            Sleep, 25
-
-            Clipboard := "3 >>> Fique online e AGUARDE! Estou indo até você!"
-            Send, ^v
-            Sleep, 25
-            Send, {Enter 3}
-            Return
+            SendTextLine("🙋‍♂️Olá, siga as instruções para receber o seu pedido:", 2)
+            SendTextLine("1. ACEITE pedido de amizade")
+            SendTextLine("Nome = " Nome, 2)
+            SendTextLine("2. Entra no jogo!", 2)
+            SendTextLine("3. Fique online e AGUARDE. Eu vou até você!")
+            Sleep, 100
+            SendInput, {Enter 3}
         }
     }
 Return
 
-^Numpad7:: ; INFORME
-    IfWinActive, ahk_exe Brave.exe
+^Numpad7:: ; ONLINE
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -150,8 +110,7 @@ Return
     }
 Return
 
-^Numpad8:: ; INFORME
-    IfWinActive, ahk_exe Brave.exe
+^Numpad8:: ; REEMBOLSO
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -164,8 +123,7 @@ Return
     }
 Return
 
-^Numpad9:: ; INFORME
-    IfWinActive, ahk_exe Brave.exe
+^Numpad9:: ; PEDIDO REEMBOLSADO COM SUCESSO
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -181,7 +139,6 @@ Return
 Return
 
 $F1:: ; ENTREGUE
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -196,7 +153,7 @@ $F1:: ; ENTREGUE
             Send, {Enter}
             Sleep, 100
             Send, {Enter}
-            Sleep, 100
+            Sleep, 50
             Send, ^!r
         }
     }
@@ -204,7 +161,6 @@ $F1:: ; ENTREGUE
 Return
 
 $F2:: ; BLOXFIM
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -226,8 +182,22 @@ $F2:: ; BLOXFIM
     SendInput {F2}
 Return
 
+$F3:: ; AddFriend
+    {
+        WinGetTitle, title, A        
+        if InStr(title, "crisp")
+        {
+            Sleep, 100
+            Send, ^!1
+            Sleep, 100
+            Send, ^+f
+            Sleep, 100
+        }
+    }
+    SendInput {F3}
+Return
+
 $F4:: ; AMIZADE
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -242,7 +212,6 @@ $F4:: ; AMIZADE
 Return
 
 $F6::   ; PLANT VS BRAINROT
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -263,7 +232,6 @@ $F6::   ; PLANT VS BRAINROT
 Return
 
 $F7:: ; WELCOME
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -279,8 +247,7 @@ $F7:: ; WELCOME
     ;SendInput {F7}
 Return
 
-$F8::   ; GAG 2
-    IfWinActive, ahk_exe Brave.exe
+^F8::   ; GAG 2
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -297,27 +264,30 @@ $F8::   ; GAG 2
             Send, {Enter}
         }
     }
-    SendInput {F8}
+    ;SendInput {F8}
 Return
 
-^F8::   ; BRAINROT 2
-    IfWinActive, ahk_exe Brave.exe
+F8::   ; BRAINROT 2
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
         {
             Sleep, 100
             Send, +1
-            Sleep, 50
-            Send, st2
             Sleep, 100
-            Send, {Enter 3}
+            ;Send, st2
+            Send, tsunami
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
+            Sleep, 100
+            Send, {Enter}
         }
     }
 Return
 
 $F9::   ; online
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A        
         if InStr(title, "crisp")
@@ -355,7 +325,6 @@ Return
 Return
 
 ^p:: ; PAGINA PEDIDO
-    IfWinActive, ahk_exe Brave.exe
     {
         WinGetTitle, title, A
         if InStr(title, "crisp")
@@ -371,22 +340,38 @@ Return
 Return
 
 ^!3::   ; INVENTARIO CHEIO
-    Sleep, 200
-    Send, /
-    Sleep, 50
-    Clipboard := "Seu inventário de Pets está cheio, por favor, libere espaço para receber o pedido."
-    Sleep, 50
-    Send, ^v
-    Send, {Enter 3}
+    WinGet, processName, ProcessName, A
+    if (processName = "RobloxPlayerBeta.exe")
+    {
+        oldClip := ClipboardAll
+        Sleep, 200
+        Send, /
+        Sleep, 50
+        Clipboard := "Seu inventário de Pets está cheio, por favor, libere espaço para receber o pedido."
+        Sleep, 50
+        Send, ^v
+        Send, {Enter 3}
+        Sleep, 50
+        Clipboard := oldClip
+    }
 Return
 
 
 ^!4::   ; INSTRUÇÕES
-    Sleep, 200
-    Clipboard := "Olá, por favor siga as instruções para receber seu pedido! Basta ler o chat acima com atenção e seguir o passo a passo!"
-    Sleep, 50
-    Send, ^v
-    Send, {Enter 3}
+    {
+        WinGetTitle, title, A
+        if InStr(title, "crisp")
+        {
+            oldClip := ClipboardAll
+            Sleep, 200
+            Clipboard := "Olá, por favor siga as instruções para receber seu pedido! Basta ler o chat acima com atenção e seguir o passo a passo!"
+            Sleep, 50
+            Send, ^v
+            Send, {Enter 3}
+            Sleep, 50
+            Clipboard := oldClip
+        }
+    }
 Return
 
 ; ============================
@@ -399,9 +384,11 @@ Return
 ::/pv::Por favor entre em um servidor público e aguarde que eu vou te seguir!
 ::/bb::bloxbrasil123
 ::/loc::Nenhum pedido localizado com essas informações. Por favor verifique se enviou os dados corretos para que seu pedido possa ser encontrado!
+::/cafe::me encontre no café do SEA 2
 
 !^Numpad1:: ; PLANTS VS BRAINROT
     {
+        oldClip := ClipboardAll
         Sleep, 50
         Send, ^a
         Sleep, 50
@@ -410,11 +397,14 @@ Return
         Send, ^v
         Sleep, 50
         Send, {Enter}
+        Sleep, 50
+        Clipboard := oldClip
     }
 Return
 
 !^Numpad2:: ; PGROW A GARDEN
     {
+        oldClip := ClipboardAll
         Sleep, 50
         Send, ^a
         Sleep, 50
@@ -423,44 +413,27 @@ Return
         Send, ^v
         Sleep, 50
         Send, {Enter}
+        Sleep, 50
+        Clipboard := oldClip
     }
 Return
 
 !^Numpad3:: ; ENTREGA STEAL
     {
+        oldClip := ClipboardAll
         Sleep, 50
         Send, ^a
         Sleep, 50
+        Clipboard := "https://www.roblox.com/share?code=ca4d03bbc554e344afe4b565d10e9a5d&type=Server" ;tsunami
         ;Clipboard := "https://www.roblox.com/share?code=37bd7781b9ee324ca51fae4abce8b623&type=Server" ;restoque1
         ;Clipboard := "https://www.roblox.com/share?code=c70019b491c98c408eb00b1f542bab79&type=Server" ;restoque2
-        Clipboard := "https://www.roblox.com/share?code=551ccd4a33920a47b3d2d928e590e91d&type=Server" ;st2
+        ;Clipboard := "https://www.roblox.com/share?code=551ccd4a33920a47b3d2d928e590e91d&type=Server" ;st2
         Sleep, 50
         Send, ^v
         Sleep, 50
         Send, {Enter}
-    }
-Return
-
-!Numpad4:: ; copiar formato
-    {        
-        Send, {Delete}
         Sleep, 50
-        Send, {Delete}
-        Sleep, 50
-        Send, {Down}
-        Sleep, 50
-        Send, {Down}
-        Sleep, 50
-        Send, ^{Backspace}
-        Sleep, 50
-        Send, ^{Backspace}
-        Sleep, 50
-        Send, ^{Backspace}
-        Sleep, 50
-        Send, ^a
-        Sleep, 50
-        Send, ^c
-        Sleep, 50
+        Clipboard := oldClip
     }
 Return
 
