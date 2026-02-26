@@ -157,7 +157,7 @@ $F1:: ; ENTREGUE
             Send, ^!r
         }
     }
-    ;SendInput {F1}
+    SendInput {F1}
 Return
 
 $F2:: ; BLOXFIM
@@ -228,7 +228,7 @@ $F6::   ; PLANT VS BRAINROT
             Send, {Enter}
         }
     }
-    ;SendInput {F6}
+    SendInput {F6}
 Return
 
 $F7:: ; WELCOME
@@ -244,9 +244,10 @@ $F7:: ; WELCOME
             SendInput, {Enter 3}
         }
     }
-    ;SendInput {F7}
+    SendInput {F7}
 Return
 
+/*
 ^F8::   ; GAG 2
     {
         WinGetTitle, title, A        
@@ -266,6 +267,7 @@ Return
     }
     ;SendInput {F8}
 Return
+*/
 
 F8::   ; BRAINROT 2
     {
@@ -500,3 +502,13 @@ Return
     Send, !{Enter}
     Sleep, 50
 Return
+
+/*
+Numpad1::
+    {
+        SendTextLine("Texto de exemplo 1")
+        SendTextLine("Texto de exemplo 2")
+        SendTextLine("Texto de exemplo 3")
+    }
+Return
+*/
